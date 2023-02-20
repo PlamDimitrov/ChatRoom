@@ -1,0 +1,15 @@
+<form [formGroup]="userForm" (ngSubmit)="handleSubmit()">
+  <div name="userFormGroup" formGroupName="userFormGroup" class="user-form-group"
+    [ngClass]="userForm.controls['userFormGroup'].invalid && userForm.controls['userFormGroup'].touched?'error':''">
+    <label for=""></label>
+    <input formControlName="username" type="text">
+    <input formControlName="userEmail" type="text">
+  </div>
+  <div formGroupName="anotherFormGroup" class="another-form-group"
+    [ngClass]="userForm.controls['anotherFormGroup'].invalid && userForm.controls['anotherFormGroup'].touched?'error':''">
+    <label for=""></label>
+    <input formControlName="anotherName" type="text">
+    <input formControlName="anotherEmail" type="text">
+  </div>
+  <button [disabled]="userForm.invalid">Submit</button>
+</form>

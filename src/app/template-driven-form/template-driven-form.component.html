@@ -1,0 +1,16 @@
+<form #templateDrivenForm="ngForm" (ngSubmit)="handleSubmit(templateDrivenForm.value)">
+  <div #userDataCtrl="ngModelGroup" [ngClass]="(userDataCtrl.invalid && userDataCtrl.touched ? 'error' : '')"
+    class="group" ngModelGroup="userData">
+    <label for="userName">Username</label>
+    <input ngModel name="username" type="text" required minlength="6">
+    <label for="userName">Email</label>
+    <input ngModel name="userEmail" type="text" required>
+  </div>
+  <div #someAtherData="ngModelGroup" class="group" ngModelGroup="someAtherData">
+    <label for="userName">anotherName</label>
+    <input ngModel name="anothername" type="text" required minlength="6">
+    <label for="userName">anotherEmail</label>
+    <input ngModel name="anotherEmail" type="text" required>
+  </div>
+  <button [disabled]='templateDrivenForm.invalid || userDataCtrl.invalid'>Submit</button>
+</form>
