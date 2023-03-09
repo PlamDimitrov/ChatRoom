@@ -16,9 +16,11 @@
   text-align: center;
   color: getDarkThemeColor("blue");
   background-color: getDarkThemeColor("gray");
-  padding: 2em;
-  min-width: 400px;
+  padding: 2em 0.5em 0.5em 0.5em;
+  min-width: 250px;
   @include displayType("tablet") {
+    padding: 2em;
+    min-width: 400px;
     display: flex;
     align-items: center;
   }
