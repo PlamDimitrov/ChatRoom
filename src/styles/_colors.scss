@@ -1,0 +1,11 @@
+$darkThemeColors: (
+  "gray": #4e4e4e,
+  "darkenGray": darken(#4e4e4e, 10%),
+  "blue": #31a8df,
+  "darkenBlue": darken(#31a8df, 10%),
+  "white": #ffffff,
+);
+
+@function getDarkThemeColor($name) {
+  @return map-get($darkThemeColors, $name);
+}

@@ -1,0 +1,18 @@
+@import "../../styles/colors";
+@import "../../styles/screens";
+
+.login-register-container {
+  display: flex;
+  flex-direction: column;
+  width: clamp(20vw, 1000px, 90vw);
+  border: 1px dashed getDarkThemeColor("blue");
+  overflow: hidden;
+  min-width: 300px;
+  @include displayType("tablet") {
+    border-radius: 1em;
+    flex-direction: row;
+  }
+  .register-component {
+    width: 100%;
+  }
+}

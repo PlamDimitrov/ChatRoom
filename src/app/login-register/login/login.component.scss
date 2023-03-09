@@ -1,0 +1,6 @@
+@import "../../../styles/colors";
+@import "../../../styles/mixins/login-register.scss";
+
+.login-container {
+  @include styleFormContainer();
+}
