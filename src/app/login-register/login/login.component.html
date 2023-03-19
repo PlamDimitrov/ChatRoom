@@ -1,15 +1,27 @@
 <div class="login-container">
-  <form>
-    <label for="">Username:</label>
-    <input type="text">
-    <label for="">Email:</label>
-    <input type="text">
-    <div>
-      <label for="">Password</label>
-      <input type="text">
-      <label for="">Repeate password</label>
-      <input type="text">
+  <form [formGroup]="loginForm">
+    <div class="form-input-container"
+      [ngClass]="loginForm.controls['username'].invalid && loginForm.controls['username'].touched?'error':''">
+      <label for="username">Username: </label>
+      <input formControlName="username" id="username" placeholder="JohnDoe">
     </div>
-    <button>Register</button>
+    <div class="form-input-container"
+      [ngClass]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched?'error':''">
+      <label for="password">Password: </label>
+      <input formControlName="password" id="password" placeholder="password" type="password" autocomplete="on">
+    </div>
+    <div class="action-bar">
+      <div class="stay-logged-in">
+        <input type="checkbox" (change)="handleCheck($event)" />
+        <label for="repeate-password">
+          Stay logged in.
+        </label>
+      </div>
+      <div (click)="handleFormSubmit()" class="submit-button">
+        <div class="text-button-container">
+          <span>Submit</span>
+        </div>
+      </div>
+    </div>
   </form>
 </div>

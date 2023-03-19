@@ -84,7 +84,6 @@
         @include inputStyle();
       }
       input:focus {
-        scale: 0.9;
         border: none;
       }
     }
@@ -114,5 +113,8 @@
         }
       }
     }
+  }
+  .error {
+    border-color: red !important;
   }
 }

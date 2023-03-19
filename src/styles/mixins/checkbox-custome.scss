@@ -1,4 +1,18 @@
 @mixin customeInputColor($inputBackgroundColor, $thickColor) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: clamp(43%, 10em, 100%);
+
+  label {
+    display: inline-block;
+    color: getDarkThemeColor("white");
+    width: 100%;
+    text-align: left;
+    margin: 0 1em 0 1em;
+    font-size: 0.7em;
+  }
+
   input[type="checkbox"] {
     flex-shrink: 0;
     appearance: none;

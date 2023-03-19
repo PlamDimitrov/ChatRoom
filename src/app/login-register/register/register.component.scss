@@ -4,18 +4,9 @@
 .register-container {
   @include styleFormContainer();
   .therms-and-conditions {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    width: clamp(43%, 10em, 100%);
     @include customeInputColor(getDarkThemeColor("gray"), getDarkThemeColor("white"));
-    label {
-      display: inline-block;
-      color: getDarkThemeColor("white");
-      width: 100%;
-      text-align: left;
-      margin: 0 1em 0 1em;
-      font-size: 0.7em;
-    }
+  }
+  .error {
+    border-color: red !important;
   }
 }

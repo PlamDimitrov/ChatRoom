@@ -6,11 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/login'
-  },
-  {
-    path: 'login',
-    component: LoginRegisterComponent
+    loadChildren: () => import('./login-register/login-register.module').then(m => m.LoginRegisterModule)
   }
 ];
 

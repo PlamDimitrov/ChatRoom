@@ -1,33 +1,40 @@
 <div class="register-container">
-  <!-- <h1>Login</h1>
-  <hr /> -->
-  <form>
-    <div class="form-input-container">
+  <form [formGroup]="registerForm">
+    <div [ngClass]="registerForm.controls['username'].invalid && registerForm.controls['username'].touched?'error':''"
+      class="form-input-container">
       <label for="username">Username: </label>
-      <input id="username" placeholder="JohnDoe">
+      <input formControlName="username" id="username" placeholder="JohnDoe">
     </div>
-    <div class="form-input-container">
+    <div [ngClass]="registerForm.controls['userEmail'].invalid && registerForm.controls['userEmail'].touched?'error':''"
+      class="form-input-container">
       <label for="email">Email: </label>
-      <input id="email" placeholder="example@email.com">
+      <input formControlName="userEmail" id="email" placeholder="example@email.com">
     </div>
-    <div class="form-input-container">
-      <label for="password">Password: </label>
-      <input id="password" placeholder="password" type="password">
-    </div>
-    <div class="form-input-container">
-      <label for="repeate-password">
-        <p>Password: </p>
-      </label>
-      <input id="repeate-password" placeholder="confirm" type="password">
+    <div formGroupName="passwords">
+      <div
+        [ngClass]="registerForm.controls['passwords'].invalid && registerForm.controls['passwords'].touched?'error':''"
+        class="form-input-container">
+        <label for="password">Password: </label>
+        <input formControlName="password" id="password" placeholder="password" type="password" autocomplete="on">
+      </div>
+      <div
+        [ngClass]="registerForm.controls['passwords'].invalid && registerForm.controls['passwords'].touched?'error':''"
+        class="form-input-container">
+        <label for="repeate-password">
+          <p>Password: </p>
+        </label>
+        <input formControlName="repeatePassword" id="repeate-password" placeholder="confirm" type="password"
+          autocomplete="on">
+      </div>
     </div>
     <div class="action-bar">
       <div class="therms-and-conditions">
-        <input type="checkbox" />
+        <input type="checkbox" (change)="handleCheck($event)" />
         <label for="repeate-password">
           I have reand and i agree to the therm and conditions.
         </label>
       </div>
-      <div onclick="submit()" class="submit-button">
+      <div (click)="handleFormSubmit()" class="submit-button">
         <div class="text-button-container">
           <span>Submit</span>
         </div>

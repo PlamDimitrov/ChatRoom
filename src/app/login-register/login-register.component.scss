@@ -4,7 +4,7 @@
 .login-register-container {
   display: flex;
   flex-direction: column;
-  width: clamp(20vw, 1000px, 90vw);
+  width: clamp(20vw, 700px, 90vw);
   border: 1px dashed getDarkThemeColor("blue");
   overflow: hidden;
   min-width: 300px;

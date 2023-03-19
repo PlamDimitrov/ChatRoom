@@ -3,4 +3,7 @@
 
 .login-container {
   @include styleFormContainer();
+  .stay-logged-in {
+    @include customeInputColor(getDarkThemeColor("gray"), getDarkThemeColor("white"));
+  }
 }

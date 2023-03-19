@@ -45,6 +45,21 @@
     left: calc(50% - 26px);
     border: 1px solid getDarkThemeColor("darkenGray");
     border-radius: 5px;
+    .link-to-login-register {
+      position: absolute;
+      top: 1.5em;
+      text-decoration: none;
+      transform: rotate(-45deg);
+      color: getDarkThemeColor("white");
+      font-size: 0.7em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      @include displayType("tablet") {
+        left: -0.3em;
+        top: 1.2em;
+        transform: rotate(45deg);
+      }
+    }
     @include displayType("tablet") {
       left: calc(100% - 26px);
       transform: rotate(-45deg);
