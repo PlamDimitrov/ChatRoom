@@ -15,7 +15,7 @@ export class ApiService {
   }
 
   public post<T>(url: string, body: any): Observable<T> {
-    return this.http.post<T>(`${this.apiUrl}/${url}`, body);
+    return this.http.post<T>(`${this.apiUrl}/${url}`, body, { withCredentials: true });
   }
 
   public put<T>(url: string, body: any): Observable<T> {

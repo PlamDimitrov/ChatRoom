@@ -3,16 +3,19 @@
     <div class="form-input-container"
       [ngClass]="loginForm.controls['username'].invalid && loginForm.controls['username'].touched?'error':''">
       <label for="username">Username: </label>
-      <input formControlName="username" id="username" placeholder="JohnDoe">
+      <input (keypress)="$event.keyCode === 13? handleFormSubmit():''" formControlName="username" id="username"
+        placeholder="JohnDoe">
     </div>
     <div class="form-input-container"
       [ngClass]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched?'error':''">
       <label for="password">Password: </label>
-      <input formControlName="password" id="password" placeholder="password" type="password" autocomplete="on">
+      <input (keypress)="$event.keyCode === 13? handleFormSubmit():''" formControlName="password" id="password"
+        placeholder="password" type="password" autocomplete="on">
     </div>
     <div class="action-bar">
       <div class="stay-logged-in">
-        <input type="checkbox" (change)="handleCheck($event)" />
+        <input type="checkbox" (change)="handleCheck($event)"
+          (keypress)="$event.keyCode === 13? handleFormSubmit():''" />
         <label for="repeate-password">
           Stay logged in.
         </label>

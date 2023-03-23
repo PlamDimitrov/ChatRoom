@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { User } from 'src/app/core/models/User';
 import { LoginRegisterService } from '../register.service';
 
@@ -12,12 +14,10 @@ export class LoginComponent {
   public loginForm: FormGroup;
   private stayLoggedIn: Boolean;
   private userToLogin: User;
-  private apiLoginCall: any;
 
-  constructor(private loginServise: LoginRegisterService, private formBuilder: FormBuilder) {
+  constructor(private loginServise: LoginRegisterService, private formBuilder: FormBuilder, private router: Router) {
     this.stayLoggedIn = false;
     this.userToLogin = new User();
-    this.apiLoginCall = loginServise.loginUser(this.userToLogin);
 
     this.loginForm = formBuilder.group({
       username: ['', [Validators.required]],
@@ -31,12 +31,19 @@ export class LoginComponent {
       this.userToLogin.username = this.loginForm.value.username;
       this.userToLogin.password = this.loginForm.value.password;
       this.userToLogin.stayLoggedIn = this.stayLoggedIn;
-      this.apiLoginCall.subscribe();
-    } else {
-      console.log(this.loginForm.get("thermsAndConditions"));
+      this.loginServise
+        .loginUser(this.userToLogin)
+        .subscribe({
+          next: (data) => {
+            this.router.navigate(["join-or-create"]);
+          },
+          error: err => console.log(`Error is here: ${JSON.stringify(err.error)}`),
+        }
+        )
     }
-  }
 
+
+  }
   handleCheck(e: any) {
     this.stayLoggedIn = e.target.checked;
   }

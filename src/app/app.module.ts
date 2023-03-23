@@ -6,10 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginRegisterModule } from './login-register/login-register.module';
 import { ApiService } from './core/services/api.service';
+import { JoinOrCreateComponent } from './join-or-create/join-or-create/join-or-create.component';
+import { LoggedInUserGuard } from './core/guards/logged-in-user.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
+    JoinOrCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,8 @@ import { ApiService } from './core/services/api.service';
     HttpClientModule
   ],
   providers: [
-    ApiService
+    ApiService,
+    LoggedInUserGuard
   ],
   bootstrap: [AppComponent]
 })
