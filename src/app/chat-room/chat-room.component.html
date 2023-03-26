@@ -1,0 +1,8 @@
+<div class="chatroom-container">
+  <span *ngFor="let message of massages; index as i;">
+    {{message}}
+  </span>
+  <hr />
+  <input type="message-input" />
+  <button (click)="submitMessage()">Submit</button>
+</div>

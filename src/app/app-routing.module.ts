@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInUserGuard } from './core/guards/logged-in-user.guard';
 import { JoinOrCreateComponent } from './join-or-create/join-or-create/join-or-create.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
 
 const routes: Routes = [
   {
@@ -14,6 +13,10 @@ const routes: Routes = [
     path: 'join-or-create',
     canActivate: [LoggedInUserGuard],
     component: JoinOrCreateComponent
+  },
+  {
+    path: 'chatroom/:name',
+    loadChildren: () => import('./chat-room/chat-room.module').then(m => m.ChatRoomModule)
   }
 ];
 

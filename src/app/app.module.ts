@@ -8,6 +8,9 @@ import { LoginRegisterModule } from './login-register/login-register.module';
 import { ApiService } from './core/services/api.service';
 import { JoinOrCreateComponent } from './join-or-create/join-or-create/join-or-create.component';
 import { LoggedInUserGuard } from './core/guards/logged-in-user.guard';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ChatService } from './core/services/sockets/chat.service';
+import { ChatRoomSocket } from './core/services/sockets/chatRoomSocket';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { LoggedInUserGuard } from './core/guards/logged-in-user.guard';
     BrowserModule,
     AppRoutingModule,
     LoginRegisterModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ApiService,
-    LoggedInUserGuard
+    ChatService,
+    ChatRoomSocket,
+    LoggedInUserGuard,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,34 @@
-<p>join-or-create works!</p>
+<div class="join-create-container">
+  <h2>Join Chatroom</h2>
+  <form [formGroup]="joinForm">
+    <div class="form-input-container"
+      [ngClass]="joinForm.controls['chatroomName'].invalid && joinForm.controls['chatroomName'].touched?'error':''">
+      <label for="joinChatroom">Chatroom name: </label>
+      <input (keypress)="$event.keyCode === 13? handleJoinFormSubmit():''" formControlName="chatroomName"
+        id="joinChatroom" placeholder="JohnDoe">
+    </div>
+    <div class="action-bar">
+      <div (click)="handleJoinFormSubmit()" class="submit-button">
+        <div class="text-button-container">
+          <span>Submit</span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <h2>Creat a chatroom</h2>
+  <form [formGroup]="createForm">
+    <div class="form-input-container"
+      [ngClass]="createForm.controls['chatroomName'].invalid && createForm.controls['chatroomName'].touched?'error':''">
+      <label for="createChatroom">Chatroom name: </label>
+      <input (keypress)="$event.keyCode === 13? handleJoinFormSubmit():''" formControlName="chatroomName"
+        id="createChatroom" placeholder="Room1">
+    </div>
+    <div class="action-bar">
+      <div (click)="handleCreateFormSubmit()" class="submit-button">
+        <div class="text-button-container">
+          <span>Submit</span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

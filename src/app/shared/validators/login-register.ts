@@ -20,4 +20,5 @@ export class LoginRegisterValidator {
     const confirmPassword = c.get('repeatePassword')?.value;
     return password === confirmPassword ? null : { matchPasswords: true };
   }
+  static userRegex: any | string;
 }

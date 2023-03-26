@@ -1,0 +1,15 @@
+@import "../../../styles/colors";
+@import "../../../styles/mixins/login-register.scss";
+
+.join-create-container {
+  height: 90vh;
+  background-color: getDarkThemeColor("gray");
+  border: 1px dashed getDarkThemeColor("blue");
+  border-radius: 1em;
+  text-align: center;
+  @include styleFormContainer();
+  flex-direction: column;
+  h2 {
+    text-transform: uppercase;
+  }
+}
