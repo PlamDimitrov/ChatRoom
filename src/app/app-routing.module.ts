@@ -15,7 +15,7 @@ const routes: Routes = [
     component: JoinOrCreateComponent
   },
   {
-    path: 'chatroom/:name',
+    path: 'chatroom/:chatRoomName',
     loadChildren: () => import('./chat-room/chat-room.module').then(m => m.ChatRoomModule)
   }
 ];

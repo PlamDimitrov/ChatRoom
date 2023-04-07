@@ -6,15 +6,17 @@ import { ChatRoomSocket } from './chatRoomSocket';
 @Injectable()
 export class ChatService {
 
-  constructor(private socket: ChatRoomSocket) {
+  constructor(private socket: ChatRoomSocket, private chatRoomName: String) {
     this.socket.on('connect', () => {
       console.log(`You have connected to chatroom: ${this.socket.ioSocket.id}`);
+      this.socket.ioSocket.join(this.chatRoomName);
       return this.socket.ioSocket.id;
     })
   }
 
   sendMessage(message: string) {
-    this.socket.emit('message-form-client', message);
+    this.socket.ioSocket.to(this.chatRoomName).emit('message-form-client', message);
+    // this.socket.emit('message-form-client', message);
   }
 
   getMessage() {

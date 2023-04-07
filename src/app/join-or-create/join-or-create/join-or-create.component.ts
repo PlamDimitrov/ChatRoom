@@ -30,7 +30,7 @@ export class JoinOrCreateComponent {
   }
 
   handleCreateFormSubmit() {
-    this.router.navigate([`/chatroom`, this.createForm.value.chatroomName])
+    this.router.navigate([`/chatroom/${this.createForm.value.chatroomName}`])
   }
 
 }
