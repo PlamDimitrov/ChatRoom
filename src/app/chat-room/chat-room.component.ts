@@ -8,26 +8,28 @@ import { ChatService } from '../core/services/sockets/chat.service';
   styleUrls: ['./chat-room.component.scss']
 })
 export class ChatRoomComponent implements OnInit {
-  // private roomName: String;
+  private roomName!: string;
   public massages: Array<String>;
 
-  constructor(private chatService: ChatService, private router: ActivatedRoute) {
-    // this.roomName = router.snapshot.paramMap.get('chatRoomName') || '';
-    console.log(router.snapshot.paramMap.get('chatRoomName'));
-
+  constructor(private chatService: ChatService, private route: ActivatedRoute) {
+    console.log('chatroom name from chatroom component', route.snapshot.paramMap.get('chatRoomName'));
     this.massages = [];
-
-    console.log();
-
   }
 
   ngOnInit(): void {
-    this.chatService.getMessage().subscribe(
-      data => this.massages = [...this.massages, data]
-    )
+    this.roomName = this.route.snapshot.paramMap.get('chatRoomName') || 'sdfsfd';
+    this.chatService.connectToRoom(this.roomName);
+    // this.chatService.getMessage(this.roomName).subscribe(
+    //   data => {
+    //     this.massages = [...this.massages, data]
+    //     console.log(data);
+
+    //   }
+    // )
+    this.chatService.getMessage(this.roomName);
   }
 
   submitMessage() {
-    this.chatService.sendMessage("some text!!!!!!!!");
+    this.chatService.sendMessage(this.roomName, "some text!!!!!!!!");
   }
 }
